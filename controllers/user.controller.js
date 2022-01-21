@@ -137,5 +137,24 @@ const {
           message: "user deleted successfully"
         });
       });
+    },
+    deactivateUser:(req,res) =>{
+      const body = req.body;
+      updateUser(body, (err, results) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        if(!results){
+          return res.json({
+            success:0,
+            message:"Failed to update user state"
+          })
+        }
+        return res.json({
+          success: 1,
+          message: "updated user state successfully"
+        });
+      });
     }
   };
